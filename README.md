@@ -13,9 +13,21 @@ An open Agent Skill for evaluating whether an idea, product opportunity, AI work
 
 Rather than asking endless questions, the skill adaptively chooses **Generate → Probe → Challenge → Synthesize → Validate → Decide**, including an **Opportunity Checkpoint** when appropriate.
 
-## Install
+## Installation
 
-Use an Agent Skills-compatible host. For Codex Desktop with a user-level Skills directory:
+### Quick install (recommended)
+
+Using the [Skills CLI](https://github.com/vercel-labs/skills):
+
+```bash
+npx skills@latest add caalvinz/opportunity-discovery-skill
+```
+
+When prompted, select **Codex** as the target agent and **Global** as the installation scope to make the skill available across projects. You can also inspect supported options with `npx skills@latest add --help`. This command uses the third-party Skills CLI; it does **not** require the standalone `codex` executable.
+
+### Manual install
+
+For Codex Desktop installations that discover user-level skills from `~/.agents/skills/`:
 
 ```bash
 git clone https://github.com/caalvinz/opportunity-discovery-skill.git
@@ -23,7 +35,21 @@ mkdir -p ~/.agents/skills/opportunity-discovery
 cp -R opportunity-discovery-skill/SKILL.md opportunity-discovery-skill/references opportunity-discovery-skill/assets ~/.agents/skills/opportunity-discovery/
 ```
 
-Restart or refresh your agent and verify it discovers `opportunity-discovery`. Actual Skills discovery locations may depend on your Codex version. Installing the GitHub repository does not install a ChatGPT Plugin.
+If your Codex version uses a different Skills directory, follow its configured path instead.
+
+### Verify installation
+
+Restart or refresh Codex Desktop. In a new conversation, ask:
+
+> Use the opportunity-discovery skill in Explore mode to challenge a new product idea. First confirm you can find the skill.
+
+### Update
+
+For a Skills CLI installation, use the CLI's update workflow if supported by your installed version (check `npx skills@latest --help`).
+
+For manual installations, pull the latest repository changes and copy the updated `SKILL.md`, `references/`, and `assets/` into your existing skill directory.
+
+Installing this repository does not install a ChatGPT Plugin.
 
 ## Try it
 
